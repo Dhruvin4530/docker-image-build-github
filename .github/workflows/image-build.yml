@@ -18,7 +18,7 @@ jobs:
           id: buil-push-docker-image
           uses: docker/build-push-action@v5
           with:
-            context: .
+            context: docker-image-build-github/
             push: true
             tags: black1512/demo1:latest
 
