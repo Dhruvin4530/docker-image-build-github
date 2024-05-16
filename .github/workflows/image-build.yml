@@ -14,11 +14,10 @@ jobs:
           with:
             username: ${{secrets.DOCKERHUB_USERNAME}}
             password: ${{secrets.DOCKERHUB_PASSWORD}}
-        - name: build and push docker image to registry
-          id: buil-push-docker-image
-          uses: docker/build-push-action@v5
-          with:
-            context: docker-image-build-github/
-            push: true
-            tags: dhruvin30/demo-image-test:latest
-
+        - name: build the docker image
+          id: build-docker-image
+          run: |
+            docker build . --file Dockerfile --tag dhruvin30/demo-image-test:latest
+        - name: push the docker image
+          id: push the docker image
+          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/dhruvin30/demo-image-test:latest
